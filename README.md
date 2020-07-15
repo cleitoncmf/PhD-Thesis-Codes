@@ -7,3 +7,6 @@ This repository contains the codes developed for the Doctoral Thesis EQUIVALENT 
 The names of the main files start with **script**, the other ones are generally functions. All these codes are commented majorly in Portuguese, yet these comments are not essential for the understanding of the algorithms. The majority of the codes are intended to produce high-quality graphs for the Thesis and the articles derived from it. Concerning the graphs, it was used the toolbox [export_fig](https://github.com/altmany/export_fig) developed by Oliver J. Woodford and Yair M. Altman, and distributed under specific licensing terms.
 
 
+For properly running some of the scripts in this repository, it is necessary to download the data sets manteined [here](https://drive.google.com/drive/folders/1mLperv5UMIXBIqJ4Pkori7cjdG5L55Un?usp=sharing). 
+
+
