@@ -78,45 +78,6 @@ psim_AmpdB = 20.*log10(psim_Y_cc_icir_s(:,2)/psim_vdc);
 psim_Ang = psim_Y_cc_icir_s(:,3);
 
 
-
-%% Comparação de Y_cc_icir_s com o resultado do psim psim
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h1 = plot(wout_Y_cc_icir_s./(2*pi),mag_Y_cc_icir_s,'linewidth',2.0);
-h2 = plot(psim_f,psim_AmpdB,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('Linearized Model','Non-Linear Model','Location','southeast');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h1 = plot(wout_Y_cc_icir_s./(2*pi),(phase_Y_cc_icir_s),'linewidth',2.0);
-h2 = plot(psim_f,psim_Ang,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Y_cc_icir' '-png' -transparent -painters -r400
-
-
-
 %% Comparação de Y_cc_icir_s com o resultado do psim psim - mudanças de fontes
 
 
@@ -224,55 +185,6 @@ Y_cc_icir_s1 = 2*s*Ceq/(4*s*Ceq*Zs+1 - (SN/(3*Vdc0)+ 2*s*Ceq* Vdc0)*Gcir1 );
 %Y_cc_icir_s2 = 2*s*Ceq/(4*s*Ceq*Zs+1 - (SN/(3*Vdc0)+ 2*s*Ceq* Vdc0)*Gcir2 );
 Y_cc_icir_s3 = 2*s*Ceq/(4*s*Ceq*Zs+1 - (SN/(3*Vdc0)+ 2*s*Ceq* Vdc0)*Gcir3 );
 
-
-
-
-%% Bode com Variação dos ganhos de Gcir 
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-[mag_Y_cc_icir_s1,phase_Y_cc_icir_s1,wout_Y_cc_icir_s1] = bode(Y_cc_icir_s1,{1*2*pi,1000*2*pi});
-mag_Y_cc_icir_s1 = 20*log10(squeeze(mag_Y_cc_icir_s1));
-phase_Y_cc_icir_s1 = squeeze(phase_Y_cc_icir_s1);
-
-[mag_Y_cc_icir_s3,phase_Y_cc_icir_s3,wout_Y_cc_icir_s3] = bode(Y_cc_icir_s3,{1*2*pi,1000*2*pi});
-mag_Y_cc_icir_s3 = 20*log10(squeeze(mag_Y_cc_icir_s3));
-phase_Y_cc_icir_s3 = squeeze(phase_Y_cc_icir_s3);
-
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h2 = plot(wout_Y_cc_icir_s1./(2*pi),mag_Y_cc_icir_s1,'--','linewidth',2.0);
-h1 = plot(wout_Y_cc_icir_s./(2*pi),mag_Y_cc_icir_s,'linewidth',2.0);
-h3 = plot(wout_Y_cc_icir_s3./(2*pi),mag_Y_cc_icir_s3,'k-.','linewidth',2.0);
-hold off
-xlim([1 1000])
-ylim([-150 0])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('k_r^{cir}=0.01 A^{-1}','k_r^{cir}=0.10 A^{-1}','k_r^{cir}=1.00 A^{-1}','Location','southeast');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h2 = plot(wout_Y_cc_icir_s1./(2*pi),(phase_Y_cc_icir_s1),'--','linewidth',2.0);
-h1 = plot(wout_Y_cc_icir_s./(2*pi),(phase_Y_cc_icir_s),'linewidth',2.0);
-h2 = plot(wout_Y_cc_icir_s3./(2*pi),(phase_Y_cc_icir_s3),'k-.','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-%export_fig 'figs/artigo1/bode_Y_cc_icir_var' '-png' -transparent -painters -r400
 
 
 
@@ -385,44 +297,6 @@ psim_AmpdB2 = 20.*log10(psim_Y_ca_i_s(:,2)/psim_vca);
 psim_Ang2 = psim_Y_ca_i_s(:,3);
 
 
-
-
-%% Comparação de Y_ac_i_s com o resultado do psim 
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-
-hold on
-h1 = plot(wout_Y_ca_i_s./(2*pi),mag_Y_ca_i_s,'linewidth',2.0);
-h2 = plot(psim_f2,psim_AmpdB2,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('Linearized Model','Non-Linear Model','Location','southeast');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h1 = plot(wout_Y_ca_i_s./(2*pi),(phase_Y_ca_i_s),'linewidth',2.0);
-h2 = plot(psim_f2,psim_Ang2,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Y_ca_i' '-png' -transparent -painters -r400
 
 
 
@@ -558,49 +432,6 @@ psim_Ang3 = psim_Y_eref_i_s(:,3);
 
 
 
-%% Comparação de Gicl com o resultado do psim 
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-annotation('textarrow',[0.57 0.62],[0.65 0.65],'String','63.57Hz', 'FontSize',21)
-%plot([120 120],[-50000 50000],'-.k','linewidth',1.5) % linha tracejuada
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h1 = plot(wout_G_i_cl_s./(2*pi),mag_G_i_cl_s,'linewidth',2.0);
-h2 = plot(psim_f3,psim_AmpdB3,'or','linewidth',2.0);
-plot([63.57 63.57],[-50000 50000],'-.k','linewidth',1.2) % linha tracejuada
-hold off
-xlim([1 1000])
-ylim([-30 10])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('Linearized Model','Non-Linear Model','Location','northeast');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h1 = plot(wout_G_i_cl_s./(2*pi),(phase_G_i_cl_s),'linewidth',2.0);
-h2 = plot(psim_f3,psim_Ang3,'or','linewidth',2.0);
-plot([63.57 63.57],[-50000 50000],'-.k','linewidth',1.2) % linha tracejuada
-hold off
-xlim([1 1000])
-ylim([-100 100])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_G_i_cl' '-png' -transparent -painters -r400
-
-
-
 
 %% Comparação de G_i_cl_s com o resultado do psim  -  mudanças de fontes
 H = figure;
@@ -696,44 +527,6 @@ psim_Ang4 = psim_Zth(:,3);
 
 
 
-%% Comparação de Zth com o resultado do psim 
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h1 = plot(wout_Zth./(2*pi),mag_Zth,'linewidth',2.0);
-h2 = plot(psim_f4,psim_AmpdB4,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('Linearized Model','Non-Linear Model','Location','southeast');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h1 = plot(wout_Zth./(2*pi),(phase_Zth),'linewidth',2.0);
-h2 = plot(psim_f4,psim_Ang4,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Zth' '-png' -transparent -painters -r400
-
-
-
 
 %% Comparação de Zth com o resultado do psim -  mudanças de fontes
 H = figure;
@@ -812,44 +605,6 @@ vref = 1000;
 psim_f5 = psim_Gth(:,1);
 psim_AmpdB5 = 20.*log10(psim_Gth(:,2)/vref);
 psim_Ang5 = psim_Gth(:,3);
-
-
-
-%% Comparação de Gth com o resultado do psim 
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h1 = plot(wout_Gth./(2*pi),mag_Gth,'linewidth',2.0);
-h2 = plot(psim_f5,psim_AmpdB5,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('Linearized Model','Non-Linear Model','Location','northwest');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h1 = plot(wout_Gth./(2*pi),(phase_Gth),'linewidth',2.0);
-h2 = plot(psim_f5,psim_Ang5,'or','linewidth',2.0);
-hold off
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Gth' '-png' -transparent -painters -r400
 
 
 
@@ -949,46 +704,6 @@ phase_Zth11 = squeeze(phase_Zth11);
 mag_Zth12 = 20*log10(squeeze(mag_Zth12));
 phase_Zth12 = squeeze(phase_Zth12);
 
-
-%% bode variação de kpi
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h2 = plot(wout_Zth11./(2*pi),mag_Zth11,'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),mag_Zth,'linewidth',2.0);
-h3 = plot(wout_Zth12./(2*pi),mag_Zth12,'k-.','linewidth',2.0);
-hold off
-ylim([-15 50])
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('k_p^{i}=0.00100','k_p^{i}=0.00010','k_p^{i}=0.00001','Location','southwest');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h2 = plot(wout_Zth11./(2*pi),(phase_Zth11),'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),(phase_Zth),'linewidth',2.0);
-h3 = plot(wout_Zth12./(2*pi),(phase_Zth12),'k-.','linewidth',2.0);
-hold off
-ylim([-150 120])
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Zth_var1' '-png' -transparent -painters -r400
 
 
 %% bode variação de kpi - mudanças de fontes
@@ -1096,51 +811,7 @@ mag_Zth22 = 20*log10(squeeze(mag_Zth22));
 phase_Zth22 = squeeze(phase_Zth22);
 
 
-%% bode variação de kri
 
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-annotation('textarrow',[0.76 0.81],[0.65 0.65],'String','276.9Hz', 'FontSize',18,'Color','r')
-annotation('textarrow',[0.56 0.61],[0.65 0.65],'String','60Hz', 'FontSize',18,'Color','r')
-%plot([120 120],[-50000 50000],'-.k','linewidth',1.5) % linha tracejuada
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h2 = plot(wout_Zth21./(2*pi),mag_Zth21,'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),mag_Zth,'linewidth',2.0);
-h3 = plot(wout_Zth22./(2*pi),mag_Zth22,'k-.','linewidth',2.0);
-plot([60 60],[-50000 50000],'-.r','linewidth',1.2) % linha tracejuada
-plot([276.9 276.9],[-50000 50000],'-.r','linewidth',1.2) % linha tracejuada
-hold off
-ylim([-15 60])
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('k_r^{i}=0.001 A^{-1}rad/s','k_r^{i}=0.010 A^{-1}rad/s','k_r^{i}=0.050 A^{-1}rad/s','Location','southwest');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h2 = plot(wout_Zth21./(2*pi),(phase_Zth21),'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),(phase_Zth),'linewidth',2.0);
-h3 = plot(wout_Zth22./(2*pi),(phase_Zth22),'k-.','linewidth',2.0);
-plot([60 60],[-50000 50000],'-.r','linewidth',1.2) % linha tracejuada
-plot([276.9 276.9],[-50000 50000],'-.r','linewidth',1.2) % linha tracejuada
-hold off
-ylim([-150 120])
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Zth_var2' '-png' -transparent -painters -r400
 
 %% bode variação de kri - mudanças de fontes
 H = figure;
@@ -1235,48 +906,6 @@ phase_Zth31 = squeeze(phase_Zth31);
 [mag_Zth32,phase_Zth32,wout_Zth32] = bode(Zth32,{1*2*pi,1000*2*pi});
 mag_Zth32 = 20*log10(squeeze(mag_Zth32));
 phase_Zth32 = squeeze(phase_Zth32);
-
-
-
-%% bode variação de kpv
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h2 = plot(wout_Zth31./(2*pi),mag_Zth31,'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),mag_Zth,'linewidth',2.0);
-h3 = plot(wout_Zth32./(2*pi),mag_Zth32,'k-.','linewidth',2.0);
-hold off
-ylim([-20 60])
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('k_p^{v}=0.01 S','k_p^{v}=0.10 S','k_p^{v}=0.50 S','Location','southwest');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h2 = plot(wout_Zth31./(2*pi),(phase_Zth31),'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),(phase_Zth),'linewidth',2.0);
-h3 = plot(wout_Zth32./(2*pi),(phase_Zth32),'k-.','linewidth',2.0);
-hold off
-ylim([-150 100])
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Zth_var3' '-png' -transparent -painters -r400
 
 
 
@@ -1378,47 +1007,6 @@ mag_Zth42 = 20*log10(squeeze(mag_Zth42));
 phase_Zth42 = squeeze(phase_Zth42);
 
 
-
-
-%% bode variação de kpv (acho que é krv)
-
-H = figure;
-set(H,'Position',[50 100 1280 600]);
-
-
-
-axes('Position',[0.08 0.55 0.9 0.4])
-hold on
-h2 = plot(wout_Zth41./(2*pi),mag_Zth41,'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),mag_Zth,'linewidth',2.0);
-h3 = plot(wout_Zth42./(2*pi),mag_Zth42,'k-.','linewidth',2.0);
-hold off
-ylim([-30 60])
-xlim([1 1000])
-grid
-set(gca,'FontSize',14, 'XScale', 'log','FontName','CMU Concrete Italic');
-ylabel('Magnitude - dB ','FontSize',16,'FontName','CMU Concrete Italic')
-set(gca,'XTickLabel',{})
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-leg = legend('k_r^{v}=0.09','k_r^{v}=1.00','k_r^{v}=9.00','Location','southwest');
-leg.FontSize = 16;
-
-axes('Position',[0.08 0.12 0.9 0.4])
-hold on
-h2 = plot(wout_Zth41./(2*pi),(phase_Zth41),'--','linewidth',2.0);
-h1 = plot(wout_Zth./(2*pi),(phase_Zth),'linewidth',2.0);
-h3 = plot(wout_Zth42./(2*pi),(phase_Zth42),'k-.','linewidth',2.0);
-hold off
-ylim([-150 100])
-xlim([1 1000])
-grid
-set(gca,'FontSize',15, 'XScale', 'log','FontName','CMU Concrete Italic','XTick',[1 10 100 1000]);
-set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
-xlabel('Frequency - Hz','FontSize',16,'FontName','CMU Concrete Italic')
-ylabel('Phase - deg ','FontSize',16,'FontName','CMU Concrete Italic')
-
-
-%export_fig 'figs/artigo1/bode_Zth_var4' '-png' -transparent -painters -r400
 
 
 
