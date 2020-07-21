@@ -1,7 +1,7 @@
 function Model = MODEL_SRF_IC(MMC,Ci)
     % Model for the Voltage-COntrolled, Single-loop MMC
     % MMC -> Structure with the MMC's parameters
-    % CTRL -> Structure with the control parameters
+    % Ci -> s-domain transfer function (current controller)
 
     % Definitions
     I = eye(3);                         % Identity matrix
