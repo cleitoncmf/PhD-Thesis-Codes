@@ -1,0 +1,46 @@
+function Model = MODEL_SRF_IC(MMC,Ci)
+    % Model for the Voltage-COntrolled, Single-loop MMC
+    % MMC -> Structure with the MMC's parameters
+    % CTRL -> Structure with the control parameters
+
+    % Definitions
+    I = eye(3);                         % Identity matrix
+    s = tf('s');                        % Complex frequency
+    Ceq = MMC.C/MMC.N;                  % Equivalent capacitance
+    
+    
+    %Z = MMC.L*s + MMC.R;                % Inner Impedance
+    %Zf = MMC.Lf*s + MMC.Rf;             % Outer Impedance
+    W = [0 -MMC.w0 0;MMC.w0 0 0;0 0 0]; % Coupling Matrix
+    sdq = W + s.*I;                     % Matrix frequency
+    Zdq = MMC.R*I + MMC.L*sdq; % Inner Impedance
+    Zfdq = MMC.Rf*I + MMC.Lf*sdq; % Outer Impedance
+      
+    
+    % Some ajustments to fit in the screem
+    Vdc0 = MMC.Vdc0;   
+    SN = MMC.SN;  
+    Cf = MMC.Cf;
+    
+    Ci_dq = [Ci 0 0;0 Ci 0;0 0 0];% Current Controller
+    Di_dq = ((MMC.L+2*MMC.Lf)/Vdc0).*W;
+    
+    % Model:
+    Gamma_mid = (4*Vdc0*Ceq.*sdq + (2*SN/(3*Vdc0)).*I)*Gidq;
+    
+    Gamma_i = I + Gamma_mid + 4*Ceq*(Z+2*Zf).*sdq -(2*SN/(3*Vdc0)).*Didq;
+    %Gchar = I + (4*Vdc0*Ceq.*sdq + (2*SN/(3*Vdc0)).*I)*Gidq + 4*Ceq*(Z+2*Zf).*sdq -(2*SN/(3*Vdc0)).*Didq;
+
+    Yac = 8*Ceq.*inv(Gchar)*sdq;
+
+    Gnorton = inv(Gchar)*(4*Vdc0*Ceq.*sdq + (2*SN/(3*Vdc0)).*I)*Gidq; % este é o Gicl
+
+   
+    
+    % Output structure
+    Model = struct('Di_dq',Di_dq,...
+                   'Gamma_i',Gamma_i,...
+                   
+                   );
+
+end
