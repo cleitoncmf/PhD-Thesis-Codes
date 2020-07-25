@@ -215,6 +215,10 @@ hyt = ylabel('Imaginary Axis - rad/s','FontSize',font_ny,'FontName','calibri','I
 
 % export_fig 'figs/artigo1/poles_ca_estavel' '-png' -transparent -painters -r400
 % export_fig 'figs/artigo1/300dpi/poles_ca_estavel' '-png' -transparent -painters -r300
+%export_fig 'figs/Tese/Estabilidade/poles_ca_estavel' '-png' -transparent -painters -r200
+export_fig 'figs/Tese/Estabilidade/poles_ca_estavel_test' '-pdf' -transparent -painters 
+
+
 
 H = figure;
 set(H,'Position',[50 100 720 600]);
@@ -248,6 +252,7 @@ hyt = ylabel('Imaginary Axis - rad/s','FontSize',font_ny,'FontName','calibri','I
 
 % export_fig 'figs/artigo1/nyquist_ca_estavel' '-png' -transparent -painters -r400
 % export_fig 'figs/artigo1/300dpi/nyquist_ca_estavel' '-png' -transparent -painters -r300
+%export_fig 'figs/Tese/Estabilidade/nyquist_ca_estavel' '-png' -transparent -painters -r200
 
 
  
@@ -452,7 +457,7 @@ set(gca,'GridLineStyle',':','GridAlpha',1.0)
 
 %export_fig 'figs/artigo1/time_resp_ca_estavel' '-png' -transparent -painters -r400
 % export_fig 'figs/artigo1/300dpi/time_resp_ca_estavel' '-png' -transparent -painters -r300
-
+%export_fig 'figs/Tese/Estabilidade/time_resp_ca_estavel' '-png' -transparent -painters -r200
 
 
 
@@ -529,4 +534,7 @@ set(gca,'GridLineStyle',':','GridAlpha',1.0)
 
 % export_fig 'figs/artigo1/time_resp_ca_instavel' '-png' -transparent -painters -r400
 % export_fig 'figs/artigo1/300dpi/time_resp_ca_instavel' '-png' -transparent -painters -r300
+
+%export_fig 'figs/Tese/Estabilidade/time_resp_ca_instavel' '-png' -transparent -painters -r200
+%export_fig 'figs/Tese/Estabilidade/time_resp_ca_instavel_test' '-pdf' -transparent -painters
 

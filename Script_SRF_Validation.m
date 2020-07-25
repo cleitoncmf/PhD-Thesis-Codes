@@ -146,7 +146,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo2/bode_Y_ca_dd' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_Y_ca_dd' '-png' -transparent -painters -r200
 
 
 
@@ -228,7 +228,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-% export_fig 'figs/artigo2/bode_Y_ca_0' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_Y_ca_0' '-png' -transparent -painters -r200
 
 
 %% bode Gi_dd
@@ -306,7 +306,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo2/bode_G_icl_dd' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_G_icl_dd' '-png' -transparent -painters -r200
 
 
 
@@ -474,7 +474,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-% export_fig 'figs/artigo2/bode_Z_th_dd' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Z_th_dd' '-png' -transparent -painters -r200
 
 
 
@@ -536,7 +536,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_Z_th_dq' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Z_th_dq' '-png' -transparent -painters -r200
 
 
 
@@ -600,7 +600,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_Z_th_0' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_Z_th_0' '-png' -transparent -painters -r200
 
 
 %% bode Gth_dq
@@ -695,7 +695,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%  export_fig 'figs/artigo2/bode_G_th_dd' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_G_th_dd' '-png' -transparent -painters -r200
 
 
 
@@ -752,7 +752,7 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-% export_fig 'figs/artigo2/bode_G_th_dq' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_G_th_dq' '-png' -transparent -painters -r200
 
 %% Modelo de Ydc
 
@@ -883,7 +883,7 @@ xl1.Position(2) = xl1.Position(2) +10;
 
 
 
-% export_fig 'figs/artigo2/bode_Y_dc' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Y_dc' '-png' -transparent -painters -r200
 
 
 
@@ -1060,7 +1060,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_Z_th_sl_dd' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Z_th_sl_dd' '-png' -transparent -painters -r200
 
 
 
@@ -1120,7 +1120,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_Z_th_sl_dq' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Z_th_sl_dq' '-png' -transparent -painters -r200
 
 
 
@@ -1180,7 +1180,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_Z_th_sl_0' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_Z_th_sl_0' '-png' -transparent -painters -r200
 
 
 
@@ -1239,7 +1239,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-%  export_fig 'figs/artigo2/bode_G_th_sl_dd' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo2/bode_G_th_sl_dd' '-png' -transparent -painters -r200
 
 
 
@@ -1301,7 +1301,7 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-% export_fig 'figs/artigo2/bode_G_th_sl_dq' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo2/bode_G_th_sl_dq' '-png' -transparent -painters -r200
 
 
 

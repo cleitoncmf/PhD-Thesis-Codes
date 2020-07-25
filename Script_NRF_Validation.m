@@ -131,7 +131,11 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-%export_fig 'figs/artigo1/bode_Y_cc_icir_2' '-pdf' -transparent -painters -r400
+%export_fig 'figs/artigo1/bode_Y_cc_icir_2' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_cc_icir_2', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_cc_icir_2', 'svg') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_cc_icir_2', 'png') %Save figure
 
 
 %% Zoom Comparação de Y_cc_icir_s com o resultado do psim psim - mudanças de fontes
@@ -188,11 +192,28 @@ Y_cc_icir_s3 = 2*s*Ceq/(4*s*Ceq*Zs+1 - (SN/(3*Vdc0)+ 2*s*Ceq* Vdc0)*Gcir3 );
 
 
 
+%% Bode com Variação dos ganhos de Gcir 
+
+
+[mag_Y_cc_icir_s1,phase_Y_cc_icir_s1,wout_Y_cc_icir_s1] = bode(Y_cc_icir_s1,{1*2*pi,1000*2*pi});
+mag_Y_cc_icir_s1 = 20*log10(squeeze(mag_Y_cc_icir_s1));
+phase_Y_cc_icir_s1 = squeeze(phase_Y_cc_icir_s1);
+
+[mag_Y_cc_icir_s3,phase_Y_cc_icir_s3,wout_Y_cc_icir_s3] = bode(Y_cc_icir_s3,{1*2*pi,1000*2*pi});
+mag_Y_cc_icir_s3 = 20*log10(squeeze(mag_Y_cc_icir_s3));
+phase_Y_cc_icir_s3 = squeeze(phase_Y_cc_icir_s3);
+
+
+
+
+
+
 
 %% Bode com Variação dos ganhos de Gcir -  mudanças de fontes
 
 H = figure;
 set(H,'Position',[50 100 1280 600]);
+%
 annotation('textarrow',[0.65 0.7],[0.65 0.65],'String','120Hz', 'FontSize',18,'Color','r')
 annotation('textarrow',[0.33 0.38],[0.65 0.65],'String','9.8Hz', 'FontSize',18,'Color','r')
 annotation('textarrow',[0.46 0.51],[0.80 0.80],'String','26.8Hz', 'FontSize',18,'Color','r')
@@ -260,10 +281,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Y_cc_icir_var' '-png' -transparent -painters -r400
-
-
-
+%export_fig 'figs/artigo1/bode_Y_cc_icir_var' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_cc_icir_var', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_cc_icir_var', 'png') %Save figure
 
 %% Funções da admitância de saída
 
@@ -348,9 +369,11 @@ yl1.Position(1) = yl2.Position(1);
 % 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Y_ca_i' '-png' -transparent -painters -r400
+%export_fig 'figs/artigo1/bode_Y_ca_i' '-png' -transparent -painters -r200
 
-
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_ca_i', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_ca_i', 'png') %Save figure
 
 %% Comparação de Y_ac_i_s com o resultado do psim - -  mudanças de fontes
 H = figure;
@@ -401,9 +424,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Y_ca_i' '-png' -transparent -painters -r400
-
-
+% export_fig 'figs/artigo1/bode_Y_ca_i' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_ca_i', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Y_ca_i', 'png') %Save figure
 
 
 %% Funções de transferência de malha fechada da corrente
@@ -482,8 +506,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-% export_fig 'figs/artigo1/bode_G_i_cl' '-png' -transparent -painters -r400
-
+% export_fig 'figs/artigo1/bode_G_i_cl' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_G_i_cl', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_G_i_cl', 'png') %Save figure
 
 
 
@@ -581,8 +607,10 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-%export_fig 'figs/artigo1/bode_Zth' '-png' -transparent -painters -r400
-
+%export_fig 'figs/artigo1/bode_Zth' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth', 'png') %Save figure
 
 
 
@@ -660,8 +688,11 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Gth' '-png' -transparent -painters -r400
-
+%export_fig 'figs/artigo1/bode_Gth' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450],'Resize','off')
+%saveas(H, 'figs/Tese/Artigo1/bode_Gth', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Gth', 'svg') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Gth', 'png') %Save figure
 
 
 
@@ -767,8 +798,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Zth_var1' '-png' -transparent -painters -r400
-
+%export_fig 'figs/artigo1/bode_Zth_var1' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var1', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var1', 'png') %Save figure
 
 
 
@@ -867,10 +900,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Zth_var2' '-png' -transparent -painters -r400
-
-
-
+%export_fig 'figs/artigo1/bode_Zth_var2' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var2', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var2', 'png') %Save figure
 
 
 %% Variação do ganho proporcional do controle de tensão
@@ -965,8 +998,10 @@ yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
 
-%export_fig 'figs/artigo1/bode_Zth_var3' '-png' -transparent -painters -r400
-
+%export_fig 'figs/artigo1/bode_Zth_var3' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+% saveas(H, 'figs/Tese/Artigo1/bode_Zth_var3', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var3', 'png') %Save figure
 
 
 %% Variação do ganho ressonante do controle de tensão
@@ -1065,9 +1100,10 @@ xl1.Position(2) = xl1.Position(2) +10;
 
 
 
-%export_fig 'figs/artigo1/bode_Zth_var4' '-png' -transparent -painters -r400
-
-
+%export_fig 'figs/artigo1/bode_Zth_var4' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+% saveas(H, 'figs/Tese/Artigo1/bode_Zth_var4', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_var4', 'png') %Save figure
 
 %% Single Loop voltage control
 
@@ -1173,8 +1209,10 @@ yl1.Position(1) = yl2.Position(1);
 xl1.Position(2) = xl1.Position(2) +10;
 
 
-%export_fig 'figs/artigo1/bode_Zth_sl' '-png' -transparent -painters -r400
-
+%export_fig 'figs/artigo1/bode_Zth_sl' '-png' -transparent -painters -r200
+set(H,'PaperUnits','points','PaperSize',[960 450])
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_sl', 'pdf') %Save figure
+%saveas(H, 'figs/Tese/Artigo1/bode_Zth_sl', 'png') %Save figure
 
 %% Resposta em frequencia para Gth single loop
 
@@ -1241,6 +1279,9 @@ leg = legend('Linearized Model','Non-Linear Model','Location','southwest');
 leg.FontSize = 0.8*font;
 leg.Interpreter = 'latex';
 
+%set(gca,'color','none')
+gcaT = get(gca);
+
 axes('Position',[0.09 0.15 0.89 0.4])
 hold on
 h1 = plot(wout_Gth_sl./(2*pi), wrapTo180(phase_Gth_sl),'linewidth',2.0);
@@ -1258,12 +1299,21 @@ set(gca,'GridAlpha',0.5,'MinorGridAlpha',0.8)
 xl1 = xlabel('Frequency - Hz','FontSize',font,'FontName','calibri','Interpreter','latex')
 yl2 = ylabel('Phase - deg ','FontSize',font,'FontName','calibri','Interpreter','latex')
 
-
+gcaB = get(gca);
 yl2.Position(1) = yl2.Position(1) + 0.03;
 yl1.Position(1) = yl2.Position(1);
 
 xl1.Position(2) = xl1.Position(2) +10;
+%set(gca,'color','none')
 
 
-%export_fig 'figs/artigo1/bode_Gth_sl' '-png' -transparent -painters -r400
+% export_fig 'figs/artigo1/bode_Gth_sl' '-png' -transparent -painters -r200
+export_fig 'figs/artigo1/bode_Gth_sl_wbg' '-png' -transparent -painters -r300
+set(H,'PaperUnits','points','PaperSize',[960 450])
+set(H,'Renderer','painters')
+%set(H, 'PaperPositionMode', 'auto');
+
+% export_fig 'figs/artigo1/bode_Gth_sl_gs' '-pdf' -transparent -painters 
+%saveas(H, 'figs/Tese/Artigo1/bode_Gth_sl', 'pdf') %Save figure
+% print(H,'figs/artigo1/bode_Gth_sl_mat','-dpdf','-painters')
 
