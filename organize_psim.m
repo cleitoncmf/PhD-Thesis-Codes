@@ -135,7 +135,7 @@ T_Results_psim_G_th.Properties.VariableNames = {'f','w','Mag_dd','Phi_dd','Mag_d
 writetable(T_Results_psim_Y_ac,'Dados/psim_teste_dq/PSIM_SRF_Yac_0.csv')
 writetable(T_Results_psim_Gi_cl,'Dados/psim_teste_dq/PSIM_SRF_Gicl_0.csv')
 writetable(T_Results_psim_Z_th,'Dados/psim_teste_dq/PSIM_SRF_Zth_0.csv')
-writetable(T_Results_psim_Z_th,'Dados/psim_teste_dq/PSIM_SRF_Gth_0.csv')
+writetable(T_Results_psim_G_th,'Dados/psim_teste_dq/PSIM_SRF_Gth_0.csv')
 
 
 
